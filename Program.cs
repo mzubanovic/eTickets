@@ -1,9 +1,23 @@
 using eTickets.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Get the configuration from the appsettings.json file
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .Build();
+
+// Get the connection string from the configuration
+var connectionString = configuration.GetConnectionString("DefaultConnection");
+
 //DbContext configuration
-builder.Services.AddDbContext<AppDbContext>();
+// DbContext configuration with the connection string
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString)); 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

@@ -1,6 +1,5 @@
 using eTickets.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +10,7 @@ var configuration = new ConfigurationBuilder()
     .Build();
 
 // Get the connection string from the configuration
-var connectionString = configuration.GetConnectionString("DefaultConnection");
+var connectionString = configuration.GetConnectionString("DefaultConnectionString");
 
 //DbContext configuration
 // DbContext configuration with the connection string

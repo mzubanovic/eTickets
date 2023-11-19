@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using eTickets.Data.Base;
+using Microsoft.AspNetCore.Authentication;
 using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models
 {
-    public class Actor
+    public class Actor:IEntityBase
     {
         [Key]
         public int Id { get; set; }

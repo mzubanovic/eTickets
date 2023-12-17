@@ -18,6 +18,9 @@ var connectionString = configuration.GetConnectionString("DefaultConnectionStrin
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IActorsService, ActorsService>();
+//Service Configuration
+builder.Services.AddScoped<IActorsService,ActorsService>();
+builder.Services.AddScoped<IProducersService, ProducersService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

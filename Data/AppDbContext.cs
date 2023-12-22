@@ -1,11 +1,12 @@
 ﻿using eTickets.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Data
 {
 
     // naša klasa inherita od DbContext od Entity-a
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         // konstruktor koji proslijeđuje instancu odDbContextOptions<AppDbContext> u base konstruktor
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { 

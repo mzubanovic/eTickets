@@ -1,3 +1,4 @@
+using AutoMapper;
 using eTickets.Data;
 using eTickets.Data.Services;
 using eTickets.Models;
@@ -20,11 +21,24 @@ var connectionString = configuration.GetConnectionString("DefaultConnectionStrin
 // DbContext configuration with the connection string
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+#region Service Configuration
 builder.Services.AddScoped<IActorsService, ActorsService>();
-//Service Configuration
 builder.Services.AddScoped<IActorsService,ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
+builder.Services.AddScoped<IMoviesService, MoviesService>();
+#endregion Service Configuration
+
+#region AutoMapper Config
+var mappingConfig = new MapperConfiguration(cfg =>
+{
+    cfg.CreateMap<Movie, NewMovie>()
+       .ForMember(dest => dest.ActorIds, opt => opt.MapFrom(src => src.Actors_Movies.Select(m => m.ActorId).ToList()));
+});
+IMapper editMovieMapper = mappingConfig.CreateMapper();
+builder.Services.AddSingleton(editMovieMapper);
+#endregion AutoMapper Config
 
 //Authentication and authorization
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();

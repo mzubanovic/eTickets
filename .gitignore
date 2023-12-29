@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Migrations/20231228221951_ModelChanges.cs
+/Migrations/20231228221951_ModelChanges.Designer.cs
+/Migrations/20231229000121_ModelChanges_shoppingCard4.cs
+/Migrations/20231229000121_ModelChanges_shoppingCard4.Designer.cs
+/Migrations/20231229000252_ModelChanges_shoppingCard5.cs
+/Migrations/20231229000252_ModelChanges_shoppingCard5.Designer.cs
+/Migrations/20231229000415_ModelChanges_shoppingCard6.cs
+/Migrations/20231229000415_ModelChanges_shoppingCard6.Designer.cs
+/Migrations/AppDbContextModelSnapshot.cs
